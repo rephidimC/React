@@ -1,45 +1,33 @@
-// var React = require("react");
-// // var ReactDOM = require("react-dom");
-// In react, there's a new way of doing this.
 import React from "react";
 import ReactDOM from "react-dom";
+// const customStyle = {
+//   color: "red",
+//   fontSize: "20px",
+//   border: "1px solid black"
+// };
+// customStyle.color = "gold";
+// the above has been done to make it easy for us to change codebase on the go/fly, as in creation of var where edits are possible.
 
-// ReactDOM.render(what to show, where to show);
-//ReactDOM.render(<h1>Hello World!</h1>, document.getElementById("root"));
-//the above is if we needed to render just one element.
-const name = "Victor";
-const language = "javaScript";
-const luckyNumber = Math.floor(Math.random() * 10);
+let greeting = "";
+const date = new Date();
+// const date = new Date("2021-05-12T19:26:08.339Z");
+const hour = date.getHours();
+const customStyle = {
+  color: ""
+};
 
-//What JSX offers is for me to be able to write javascrip inside HTML that is inside a javaScript already.
-//But N.B: I can't write a statement. e.g if-else
+// new Date().toTimeString().split(" ")[0];
+if (hour > 0 && hour < 12) {
+  greeting = "Good morning";
+  customStyle.color = "red";
+} else if (hour > 12 && hour < 18) {
+  greeting = "Good afternoon";
+  customStyle.color = "green";
+} else {
+  greeting = "Good night";
+  customStyle.color = "blue";
+}
 ReactDOM.render(
-  <div>
-    <h1>
-      Hello {name + " " + language}! and my language is {language}
-    </h1>
-    {/* below is a method of writing in es6. */}
-    <h1>Hello {`${name} ${language}`}</h1>
-    <p>I am Victor and my lucky number is {luckyNumber}.</p>
-  </div>,
+  <h1 style={customStyle}>{greeting}</h1>,
   document.getElementById("root")
 );
-
-
-const myName = "Angela";
-const currentDate = new Date();
-const year = currentDate.getFullYear();
-
-ReactDOM.render(
-  <div>
-    <p>Created by {myName}</p>
-    <p>Copyright {year}</p>
-  </div>,
-  document.getElementById("root")
-);
-
-
-
-
-
-// ReactDOM.render(what to show, where to show);
